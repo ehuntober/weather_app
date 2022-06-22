@@ -1,0 +1,47 @@
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device=width, initial-scale=1.0">
+        <title> Detail Report </title>
+        <link href= "{{ url_for('static', filename ='css/main.css') }}" rel="stylesheet" type="text/css">
+    </head>
+<body>
+
+<div class="container">
+    <div class="content">
+
+        <img src="{{url_for('static', filename='weather.png')}}" style="width: 30%;" />  
+
+        <h2> Hello  {{ user.name }} &#128512; </h2>
+        <p> Today's Report! </p>
+
+         <div class="report-box">
+        {% if data.country_code and data.coordinate and data.temp and data.pressure and data.humidity %}
+            <h2> <span class="datalist" >City Name : </span> {{ user.city |upper() }} </h2>
+            <br>
+            <h3> <span class="datalist">Country Code :  </span>{{data.country_code}}</h1>
+            <br>
+            <h4 > <span class="datalist">Coordinate : </span> {{data.coordinate}}</h4>
+            <br>
+            <h4> <span class="datalist">Temperature (in kelvin) : </span> {{data.temp}}</h4>
+            <br>
+            <h4><span class="datalist">Pressure : </span>{{data.pressure}} </h4>
+            <br>
+            <h4> <span class="datalist">Humidity :</span> {{data.humidity}} </h4>
+      
+        {% endif %}
+
+    </div>
+    
+
+        <button class="btn"> <a href="{{ url_for('details') }}">  Check again</a></button>
+    </div>
+</div>
+
+</body>
+</html>
+
+
